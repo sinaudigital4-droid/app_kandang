@@ -1,4 +1,15 @@
 import streamlit as st
+# Menyembunyikan header, menu, dan footer bawaan Streamlit
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+    """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+
 from license_manager import validate_license
 
 # Pengaturan Halaman Utama
