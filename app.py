@@ -28,7 +28,7 @@ st.caption("Aplikasi pembuat prompt otomatis sesuai sintaks resmi Seedance 2.5, 
 
 # ===== LICENSE HYBRID SYSTEM =====
 if 'license_valid' not in st.session_state:
-    st.session_state.license_valid = False
+    st.session_state.license_valid = True
     st.session_state.license_info = None
     st.session_state.license_key = ""
 
@@ -68,10 +68,10 @@ else:
             st.sidebar.error("License key tidak boleh kosong")
 
 # Blokir akses jika belum valid
-if not st.session_state.license_valid:
-    st.warning("🔒 Aplikasi ini dilindungi lisensi. Silakan aktifkan lisensi di sidebar untuk melanjutkan.")
-    st.info("💡 Anda menerima license key dari penjual. Tempelkan di sidebar untuk mengakses generator.")
-    st.stop()
+#if not st.session_state.license_valid:
+   # st.warning("🔒 Aplikasi ini dilindungi lisensi. Silakan aktifkan lisensi di sidebar untuk melanjutkan.")
+   # st.info("💡 Anda menerima license key dari penjual. Tempelkan di sidebar untuk mengakses generator.")
+   # st.stop()
 
 # Sidebar Pilihan Kategori Model
 model_choice = st.sidebar.selectbox(
