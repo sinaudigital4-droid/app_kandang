@@ -70,7 +70,7 @@ else:
 # Blokir akses jika belum valid
 if not st.session_state.license_valid:
     st.warning("🔒 Aplikasi ini dilindungi lisensi. Silakan aktifkan lisensi di sidebar untuk melanjutkan.")
-   st.info("💡 Anda menerima license key dari penjual. Tempelkan di sidebar untuk mengakses generator.")
+    st.info("💡 Anda menerima license key dari penjual. Tempelkan di sidebar untuk mengakses generator.")
     st.stop()
 
 # Sidebar Pilihan Kategori Model
