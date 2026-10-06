@@ -13,6 +13,7 @@ div[data-testid="stDecoration"] {visibility: hidden; height: 0%; position: fixed
 div[data-testid="stStatusWidget"] {visibility: hidden; height: 0%; position: fixed;}
 .viewerBadge_container__1QSob {display: none !important; visibility: hidden !important;}
 iframe[title="Streamlit App"] ~ div {display: none !important;}
+div:has(> a[href*="streamlit.cloud"]) {display: none !important;}
 </style>
 
 """
