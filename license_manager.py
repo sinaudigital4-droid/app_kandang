@@ -5,7 +5,7 @@ Kompatibel dengan license_manager.py
 import requests
 import urllib.parse
 
-SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyKsEzHJDEgnnFRFge-BroNnoPi858Gk95SlfoMJFytCKdxL1Y4_6DjAohmxgrh5-30/exec"
+SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHwNQauR-ZlUnWjVWMNdmoj9WFyDp3i4Lz25uBYmiaArr_taRirZlqG1smO3IzQ4i/exec"
 
 def check_license_google(license_key, device_hash=None):
     params = {
