@@ -3,7 +3,8 @@ import streamlit as st
 # Menyembunyikan header, menu, dan footer bawaan Streamlit
 hide_streamlit_style = """
     <style>
-   [data-testid="stToolbar"] {visibility: hidden; display: none;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
    </style>
     """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
