@@ -5,7 +5,8 @@ Kompatibel dengan license_manager.py
 import requests
 import urllib.parse
 
-SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHwNQauR-ZlUnWjVWMNdmoj9WFyDp3i4Lz25uBYmiaArr_taRirZlqG1smO3IzQ4i/exec"
+SCRIPT_URL = "
+https://script.google.com/macros/s/AKfycbyKsEzHJDEgnnFRFge-BroNnoPi858Gk95SlfoMJFytCKdxL1Y4_6DjAohmxgrh5-30/exec"
 
 def check_license_google(license_key, device_hash=None):
     params = {
@@ -46,3 +47,5 @@ if __name__ == '__main__':
         # Contoh validasi balik
         res_check = check_license_google(key)
         print('Check:', res_check)
+# Alias agar kompatibel dengan app.py
+validate_license = check_license_google
