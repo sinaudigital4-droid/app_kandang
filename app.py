@@ -2,11 +2,19 @@ import streamlit as st
 
 # Menyembunyikan header, menu, dan footer bawaan Streamlit
 hide_streamlit_style = """
+
 <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+.stDeployButton {display: none !important;}
+div[data-testid="stToolbar"] {visibility: hidden; height: 0%; position: fixed;}
+div[data-testid="stDecoration"] {visibility: hidden; height: 0%; position: fixed;}
+div[data-testid="stStatusWidget"] {visibility: hidden; height: 0%; position: fixed;}
+.viewerBadge_container__1QSob {display: none !important; visibility: hidden !important;}
+iframe[title="Streamlit App"] ~ div {display: none !important;}
 </style>
+
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
