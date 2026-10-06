@@ -28,7 +28,7 @@ st.caption("Aplikasi pembuat prompt otomatis sesuai sintaks resmi Seedance 2.5, 
 
 # ===== LICENSE HYBRID SYSTEM =====
 if 'license_valid' not in st.session_state:
-    st.session_state.license_valid = False:
+    st.session_state.license_valid = False
     st.session_state.license_info = None
     st.session_state.license_key = ""
 
