@@ -63,51 +63,31 @@ def generate_license(user: str, expiry_date: str, features: str = "all", device_
     return license_key
 
 # ==================== VALIDASI LICENSE - DIPAKAI DI APP ====================
+import requests
+
+# URL Google Apps Script Anda
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwBkSXgUaP3jsivtYPNtbnTE9HKdwxrqcJhbq84wLPfzdsBdUtOvtVyboJC6LyZyD1u/exec"
+
 def validate_license(license_key: str):
     """
-    Mengembalikan dict: {valid: bool, message: str, user: str, expiry: date, features: str}
+    Mengecek validitas license key secara online langsung ke Google Sheets 
+    melalui Google Apps Script Web App.
     """
     try:
-        if not license_key or "." not in license_key:
-            return {"valid": False, "message": "Format license tidak valid"}
-
-        payload_b64, sig = license_key.rsplit(".", 1)
-        payload = decode_payload(payload_b64)
-
-        # Verifikasi signature
-        expected_sig = make_signature(payload)
-        if not hmac.compare_digest(expected_sig, sig):
-            return {"valid": False, "message": "Signature tidak cocok, license palsu"}
-
-        parts = payload.split("|")
-        if len(parts) != 4:
-            return {"valid": False, "message": "Payload rusak"}
-
-        user, expiry_str, features, license_device = parts
-
-        # Cek expiry
-        try:
-            expiry_date = datetime.strptime(expiry_str, "%Y-%m-%d").date()
-        except ValueError:
-            return {"valid": False, "message": "Format tanggal expiry salah"}
-
-        today = date.today()
-        if today > expiry_date:
-            return {"valid": False, "message": f"Lisensi kedaluwarsa pada {expiry_date}"}
-
-        # Cek device binding
-        if license_device != "*" and license_device != DEVICE_HASH:
-            return {"valid": False, "message": "Lisensi tidak cocok untuk perangkat ini"}
-
-        return {
-            "valid": True,
-            "message": "Lisensi valid",
-            "user": user,
-            "expiry": expiry_date,
-            "features": features
-        }
+        if not license_key or not license_key.strip():
+            return {"valid": False, "message": "License key tidak boleh kosong"}
+        
+        # Kirim key ke Google Apps Script
+        response = requests.get(APPS_SCRIPT_URL, params={"key": license_key.strip()}, timeout=10)
+        
+        if response.status_code == 200:
+            data = response.json()
+            return data
+        else:
+            return {"valid": False, "message": "Gagal terhubung ke server lisensi"}
+            
     except Exception as e:
-        return {"valid": False, "message": f"Error validasi: {str(e)}"}
+        return {"valid": False, "message": f"Koneksi gagal: {str(e)}"}
 
 # Contoh penggunaan generate saat testing
 if __name__ == "__main__":
