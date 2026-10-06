@@ -66,7 +66,7 @@ def generate_license(user: str, expiry_date: str, features: str = "all", device_
 import requests
 
 # URL Google Apps Script Anda
-APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwBkSXgUaP3jsivtYPNtbnTE9HKdwxrqcJhbq84wLPfzdsBdUtOvtVyboJC6LyZyD1u/exec"
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKHwNQauR-ZlUnWjVWMNdmoj9WFyDp3i4Lz25uBYmiaArr_taRirZlqG1smO3IzQ4i/exec"
 
 def validate_license(license_key: str):
     """
