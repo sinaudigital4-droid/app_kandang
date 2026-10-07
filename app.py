@@ -73,10 +73,10 @@ if not st.session_state.license_valid:
 # ==========================================
 
 # Info status lisensi di sidebar (karena sudah aktif, sidebar aman digunakan)
-expiry = st.session_state.license_info['expiry']
-user = st.session_state.license_info['user']
-st.sidebar.success(f"✅ Lisensi aktif untuk {user}")
-st.sidebar.info(f"Berlaku sampai: {expiry}")
+# Ambil data lisensi secara aman agar tidak KeyError
+info = st.session_state.get('license_info', {})
+expiry = info.get('expiry') or info.get('expires') or info.get('date') or '-'
+user = info.get('user') or info.get('username') or 'Customer'
 if st.sidebar.button("🔄 Ganti Lisensi"):
     st.session_state.license_valid = False
     st.session_state.license_info = None
